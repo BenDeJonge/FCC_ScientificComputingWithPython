@@ -1,11 +1,19 @@
-# This entrypoint file to be used in development. Start by reading README.md
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Mar 20 00:46:20 2022
+
+@author: dejong71
+"""
+
+#______________________________________________________________________________
+
 from pytest import main
+import os
 
-from arithmetic_arranger import arithmetic_arranger
+#______________________________________________________________________________
 
-
-print(arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"]))
-
-
-# Run unit tests automatically
+# Change to Project folder and run unit tests automatically.
+os.chdir(os.path.split(__file__)[0])
 main()
+
+#______________________________________________________________________________
