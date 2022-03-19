@@ -7,7 +7,7 @@ Created on Sat Mar 19 22:46:13 2022
 
 #______________________________________________________________________________
 
-from Project1.arithmaticproblem import ArithmaticProblem
+from Project1.arithmatic_problem import ArithmaticProblem
 
 #______________________________________________________________________________
 
@@ -24,12 +24,12 @@ def arithmetic_arranger(problems : list, show_solution=False):
             for i, line in enumerate(ap.formatted_problem):
                 lines[i] += line + 4 * ' '
         lines = [line.rstrip() for line in lines ]
-        # Printing problem and solution separately.
-        for line in lines[:-1]:
-            print(line)
+        # Printing problem and solution separately.        
         if show_solution:
-            print(lines[-1])
-        return '\n'.join(lines)
+            return '\n'.join(lines)
+        else:
+            return '\n'.join(lines[:-1])
+        
     # If any problem returns an error, display the first error.
     else:
         for ap in aps:
