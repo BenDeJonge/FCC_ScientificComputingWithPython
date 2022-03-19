@@ -1,6 +1,6 @@
 import pytest
 
-from arithmetic_arranger import arithmetic_arranger
+from Project1.arithmetic_arranger import arithmetic_arranger
 
 test_cases = [
     pytest.param(
