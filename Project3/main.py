@@ -1,8 +1,20 @@
-# This entrypoint file to be used in development. Start by reading README.md
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Mar 20 00:51:48 2022
+
+@author: dejong71
+"""
+
+#______________________________________________________________________________
+
 import budget
 from budget import create_spend_chart
 from unittest import main
+import os
 
+#______________________________________________________________________________
+
+# Change to Project folder and run unit tests automatically.
 food = budget.Category("Food")
 food.deposit(1000, "initial deposit")
 food.withdraw(10.15, "groceries")
@@ -21,5 +33,7 @@ print(clothing)
 
 print(create_spend_chart([food, clothing, auto]))
 
-# Run unit tests automatically
+os.chdir(os.path.split(__file__)[0])
 main(module='test_module', exit=False)
+
+#______________________________________________________________________________
