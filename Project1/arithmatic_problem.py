@@ -39,17 +39,15 @@ class ArithmaticProblem:
         # increasing the width by 2 characters.
         self.width = self.find_largest_number_width() + 2
         # Performing input quality tests.
-        self.quality_check, self.error = self.check_problem()
         try:
             self.solution = eval(self.problem)
         except SyntaxError:
             self.solution = None
             self.error = "Error: Invalid syntax."
-            return
         except ZeroDivisionError:
             self.solution = None
             self.error = "Error: Division by zero."
-            return
+        self.quality_check, self.error = self.check_problem()
         # Formatting the output problem.
         if self.solution is not None:# and self.quality_check:
             self.formatted_problem = self.format_problem()
@@ -146,7 +144,6 @@ class ArithmaticProblem:
             print(line)
             
     #__________________________________________________________________________
-
 
     def __repr__(self):
         return f'ArithmaticProblem\n{self.lines[0]} {self.operator} {self.lines[1]} = {self.solution}'
