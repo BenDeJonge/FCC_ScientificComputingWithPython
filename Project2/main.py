@@ -7,7 +7,7 @@ Created on Sun Mar 20 00:50:46 2022
 
 #______________________________________________________________________________
 
-from time_calculator import add_time
+from Project2.time_calculator import add_time
 from unittest import main
 import os
 
