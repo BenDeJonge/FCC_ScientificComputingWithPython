@@ -60,7 +60,7 @@ def sum_time(t1 : dict, t2 : dict) -> dict:
     m %= 60
     days = h // 24
     h %= 24
-
+        
     return {'hour'   : h,
             'min'    : m,
             'days'   : days,
@@ -82,9 +82,16 @@ def find_period(t : dict) -> dict:
     dict
         {'hour' : h, 'min' : m, 'days' : days, 'period' : period}.
     '''
-    
     period = 'AM'
-    if t['hour'] > 12:
+    # 00:00 is 12:00 AM.
+    if t['hour'] == 0:
+        t['hour'] = 12
+        period = 'AM'
+    # 12:00 is 12:00 PM.
+    elif t['hour'] == 12:
+        period = 'PM'
+    # 13:00 is 01:00 PM.
+    elif t['hour'] > 12:
         t['hour'] -= 12
         period = 'PM'
     t['period'] = period
