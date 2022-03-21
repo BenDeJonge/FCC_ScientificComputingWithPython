@@ -6,7 +6,7 @@ The following information about the projects is copied from the above website.
 ## Project 1
 Create a function that receives a list of strings that are arithmetic problems and returns the problems arranged vertically and side-by-side. The function should optionally take a second argument. When the second argument is set to True, the answers should be displayed.
 
-## Project 2 (to be finished)
+## Project 2
 Write a function named add_time that takes in two required parameters and one optional parameter:
 - a start time in the 12-hour clock format (ending in AM or PM)
 - a duration time that indicates the number of hours and minutes
