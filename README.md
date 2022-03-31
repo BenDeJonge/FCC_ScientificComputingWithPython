@@ -13,10 +13,10 @@ Write a function named add_time that takes in two required parameters and one op
 - (optional) a starting day of the week, case insensitive
 The function should add the duration time to the start time and return the result.
 
-## Project 3 (to be finished)
+## Project 3
 Complete the Category class in budget.py. It should be able to instantiate objects based on different budget categories like food, clothing, and entertainment.
 
-## Project 4 (to be finished)
+## Project 4
 Use object oriented programming to create a Rectangle class and a Square class. The Square class should be a subclass of Rectangle and inherit methods and attributes.
 
 ## Project 5 (to be finished)
