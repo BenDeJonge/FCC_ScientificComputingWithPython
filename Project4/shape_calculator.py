@@ -7,6 +7,46 @@ Created on Thu Mar 31 23:19:36 2022
 
 #==============================================================================
 
+class PositiveInteger:
+    '''
+    A simple class to make decorate an attribute with an @property to enforce
+    strictly positive values.
+
+    Parameters
+    ----------
+    name : str
+        The name of the attribute.
+    value : int
+        The set value of the attribute.
+
+    Returns
+    -------
+    None.
+    '''
+    
+    #---INITIALIZATION---------------------------------------------------------
+
+    def __init__(self, name : str, value : int):
+        self.name = name
+        self.value = value
+        
+    #---PROPERTIES-------------------------------------------------------------
+    
+    @property
+    def value(self):
+        return self._value
+    @value.setter
+    def value(self, val : int):
+        if isinstance(val, int) and val > 0:
+            self._value = val
+        else:
+            raise ValueError(f'{self.name.capitalize()} cannot be negative.')
+    @value.deleter
+    def value(self):
+        del self._value 
+
+#==============================================================================
+
 class Rectangle:
     '''
     A simple class to model a rectangle.
@@ -26,36 +66,8 @@ class Rectangle:
     #---INITIALIZATION---------------------------------------------------------
 
     def __init__(self, width : int, height : int):
-        self.width = width
-        self.height = height
-    
-    #---PROPERTIES-------------------------------------------------------------
-    
-    @property
-    def width(self):
-        return self._width
-    @width.setter
-    def width(self, val : int):
-        if isinstance(val, int) and val > 0:
-            self._width = val
-        else:
-            raise ValueError('Width cannot be negative.')
-    @width.deleter
-    def width(self):
-        del self._width
-
-    @property
-    def height(self):
-        return self._height
-    @height.setter
-    def height(self, val : int):
-        if isinstance(val, int) and val > 0:
-            self._height = val
-        else:
-            raise ValueError('Height cannot be negative.')
-    @height.deleter
-    def height(self):
-        del self._height
+        self.width = PositiveInteger('width', width).value
+        self.height = PositiveInteger('height', height).value
         
     #---REPRESENTATION---------------------------------------------------------
     
