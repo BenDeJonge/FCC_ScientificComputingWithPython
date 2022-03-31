@@ -7,8 +7,7 @@ Created on Sun Mar 20 00:53:09 2022
 
 #______________________________________________________________________________
 
-import budget
-import shape_calculator
+import Project4.shape_calculator as shape_calculator
 from unittest import main
 import os
 
