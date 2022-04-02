@@ -7,43 +7,36 @@ Created on Thu Mar 31 23:19:36 2022
 
 #==============================================================================
 
-class PositiveInteger:
+class PositiveIntegerDescriptor: 
     '''
-    A simple class to make decorate an attribute with an @property to enforce
-    strictly positive values.
+    A descriptor class to enforce an attribute to be a strictly positive integer.
 
     Parameters
     ----------
     name : str
-        The name of the attribute.
-    value : int
-        The set value of the attribute.
+        The public name of the attribute.
 
     Returns
     -------
     None.
     '''
     
-    #---INITIALIZATION---------------------------------------------------------
-
-    def __init__(self, name : str, value : int):
-        self.name = name
-        self.value = value
-        
-    #---PROPERTIES-------------------------------------------------------------
+    #--INITIALIZATION----------------------------------------------------------
     
-    @property
-    def value(self):
-        return self._value
-    @value.setter
-    def value(self, val : int):
-        if isinstance(val, int) and val > 0:
-            self._value = val
+    def __init__(self, name : str):
+        self.public_name  = name
+        self.private_name = '_' + name
+            
+    #--GETTERS AND SETTERS-----------------------------------------------------
+
+    def __get__(self, obj, objtype=None):
+        return getattr(obj, self.private_name)
+
+    def __set__(self, obj, new_value):
+        if isinstance(new_value, int) and new_value > 0:
+            setattr(obj, self.private_name, new_value)
         else:
-            raise ValueError(f'{self.name.capitalize()} cannot be negative.')
-    @value.deleter
-    def value(self):
-        del self._value 
+            raise ValueError(f'{self.public_name.capitalize()} must be a strictly positive integer.')
 
 #==============================================================================
 
@@ -63,11 +56,16 @@ class Rectangle:
     None.
     '''
     
+    #---DESCRIPTORS------------------------------------------------------------
+    
+    width = PositiveIntegerDescriptor('width')
+    height = PositiveIntegerDescriptor('height')
+    
     #---INITIALIZATION---------------------------------------------------------
 
     def __init__(self, width : int, height : int):
-        self.width = PositiveInteger('width', width).value
-        self.height = PositiveInteger('height', height).value
+        self.width  = width
+        self.height = height
         
     #---REPRESENTATION---------------------------------------------------------
     
@@ -75,23 +73,18 @@ class Rectangle:
         return f'Rectangle(width={self.width}, height={self.height})'
     
     #---SETTERS----------------------------------------------------------------
-    # In practice replaced by PROPERTIES, but required for unittests.
-    def _check_val(self, val):
-        return isinstance(val, int) and val > 0
     
-    def set_width(self, val : int):
+    def set_width(self, value : int):
         '''
-        Set the Rectangle width to any integer value.
+        Set the Rectangle width to any stricly positive integer value.
         '''
-        if self._check_val(val):
-            self.width = val
+        self.width = value
             
-    def set_height(self, val):
+    def set_height(self, value):
         '''
-        Set the Rectangle height to any integer value.
+        Set the Rectangle height to any stricly positive integer value.
         '''
-        if self._check_val(val):
-            self.height = val
+        self.height = value
     
     #---GEOMETRIC METHODS------------------------------------------------------
     
@@ -156,10 +149,15 @@ class Square(Rectangle):
     None.
     '''
     
+    #---DESCRIPTORS------------------------------------------------------------
+    
+    width = PositiveIntegerDescriptor('width')
+    height = PositiveIntegerDescriptor('height')
+    
     #---INITIALIZATION---------------------------------------------------------
     
     def __init__(self, side : int):
-        self.width = side
+        self.width  = side
         self.height = side
         
     #---REPRESENTATION---------------------------------------------------------
@@ -169,28 +167,25 @@ class Square(Rectangle):
     
     #---SETTERS----------------------------------------------------------------
     # In practice replaced by PROPERTIES, but required for unittests.
-    def set_width(self, val):
+    def set_width(self, value):
         '''
-        Set the Square width and height to any integer value.
+        Set the Square width and height to any stricly positive integer value.
         '''
-        if self._check_val(val):
-            self.width = val
-            self.height = val
+        self.width  = value
+        self.height = value
             
-    def set_height(self, val):
+    def set_height(self, value):
         '''
-        Set the Square width and height to any integer value.
+        Set the Square width and height to any stricly positive integer value.
         '''
-        if self._check_val(val):
-            self.width = val
-            self.height = val      
+        self.width  = value
+        self.height = value
             
-    def set_side(self, val):
+    def set_side(self, value):
         '''
-        Set the Square width and height to any integer value.
+        Set the Square width and height to any stricly positive integer value.
         '''
-        if self._check_val(val):
-            self.width = val
-            self.height = val  
-            
+        self.width  = value
+        self.height = value
+
 #==============================================================================
