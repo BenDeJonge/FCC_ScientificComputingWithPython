@@ -166,7 +166,7 @@ class Square(Rectangle):
         return f'Square(side={self.width})'
     
     #---SETTERS----------------------------------------------------------------
-    # In practice replaced by PROPERTIES, but required for unittests.
+
     def set_width(self, value):
         '''
         Set the Square width and height to any stricly positive integer value.
