@@ -9,7 +9,7 @@ Created on Thu Mar 31 23:19:36 2022
 
 class PositiveIntegerDescriptor: 
     '''
-    A descriptor class to enforce an attribute to be a strictly positive integer.
+    A descriptor class to force an attribute to be a strictly positive integer.
 
     Parameters
     ----------
