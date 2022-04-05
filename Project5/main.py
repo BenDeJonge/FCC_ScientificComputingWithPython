@@ -7,7 +7,7 @@ Created on Sun Mar 20 00:54:15 2022
 
 #______________________________________________________________________________
 
-import prob_calculator
+import Project5.prob_calculator as prob_calculator
 from unittest import main
 import os
 

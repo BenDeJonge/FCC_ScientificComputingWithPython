@@ -1,5 +1,5 @@
 import unittest
-import prob_calculator
+import Project5.prob_calculator as prob_calculator
 
 prob_calculator.random.seed(95)
 class UnitTests(unittest.TestCase):
